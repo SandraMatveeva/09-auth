@@ -7,13 +7,14 @@ import Loader from "@/components/Loader/Loader";
 import NoteList from "@/components/NoteList/NoteList";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchBox from "@/components/SearchBox/SearchBox";
-import { fetchNotes } from "@/lib/api";
+
 import { Note } from "@/types/note";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import css from "./page.module.css";
 import Link from "next/link";
+import { fetchNotes } from "@/lib/api/clientApi";
 
 type NotesClientProps = {
   initialPage?: number;
