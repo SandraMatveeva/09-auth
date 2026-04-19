@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function proxy(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+  const token = req.cookies.get("accessToken")?.value;
   console.log(req.cookies);
-  
 
   const isAuthPage =
     req.nextUrl.pathname === "/sign-in" ||
