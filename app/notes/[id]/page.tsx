@@ -4,10 +4,10 @@
 //   return <div>Note ID: {id}</div>;
 // }
 
-import { fetchNoteById } from '@/lib/api/api';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import NoteDetailsClient from './NoteDetails.client';
 import { Metadata } from 'next';
+import { fetchNoteById } from '@/lib/api/clientApi';
 
 type MetaDataProps = {
   params: Promise<{

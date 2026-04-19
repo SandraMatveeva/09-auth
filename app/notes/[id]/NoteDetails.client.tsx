@@ -3,9 +3,9 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import css from "./page.module.css";
 import { useParams } from 'next/navigation';
-import { fetchNoteById } from "@/lib/api/api";
 import Loader from "@/components/Loader/Loader";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import { fetchNoteById } from "@/lib/api/clientApi";
 
 
 
