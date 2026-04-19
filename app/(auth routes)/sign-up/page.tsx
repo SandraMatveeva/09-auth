@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import css from "./SignUpPage.module.css";
 import { register } from "@/lib/api/clientApi";
+import { User } from "@/types/user";
+import { useAuthStore } from "@/lib/store/authStore";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -16,7 +18,10 @@ export default function SignUpPage() {
     e.preventDefault();
 
     try {
-      await register({ email, password });
+      const user: User = await register({ email, password });
+      console.log("after login", user);
+      useAuthStore.getState().setUser(user);
+
       router.push("/profile");
     } catch (err) {
       setError("Registration failed");

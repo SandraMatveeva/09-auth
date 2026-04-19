@@ -48,15 +48,15 @@ export default function AuthNavigation() {
       {!user && (
         <>
           <li className={css.navigationItem}>
-            <a href="/sign-in" className={css.navigationLink}>
+            <Link href="/sign-in" className={css.navigationLink}>
               Login
-            </a>
+            </Link>
           </li>
 
           <li className={css.navigationItem}>
-            <a href="/sign-up" className={css.navigationLink}>
+            <Link href="/sign-up" className={css.navigationLink}>
               Sign up
-            </a>
+            </Link>
           </li>
         </>
       )}

@@ -1,6 +1,5 @@
-import { Note } from '@/types/note';
-import { api } from './api';
-
+import { Note } from "@/types/note";
+import { api } from "./api";
 
 export type CreateNoteData = {
   title: string;
@@ -16,31 +15,33 @@ interface ResponseResult {
 // 🔐 AUTH
 
 export const login = async (data: { email: string; password: string }) => {
-  const res = await api.post('/auth/login', data);
+  const res = await api.post("/auth/login", data);
   return res.data;
 };
 
 export const register = async (data: { email: string; password: string }) => {
-  const res = await api.post('/auth/register', data);
+  const res = await api.post("/auth/register", data);
   return res.data;
 };
 
 export const logout = async () => {
-  await api.post('/auth/logout');
+  await api.post("/auth/logout");
 };
 
 export const checkSession = async () => {
-  const res = await api.get('/auth/session');
+    console.log("checkSession");
+    
+  const res = await api.get("/auth/session");
   return res.data;
 };
 
 export const getMe = async () => {
-  const res = await api.get('/users/me');
+  const res = await api.get("/users/me");
   return res.data;
 };
 
-export const updateMe = async (data: string) => {
-  const res = await api.patch('/users/me', {username: data});
+export const updateMe = async (data: { username: string }) => {
+  const res = await api.patch("/users/me", data);
   return res.data;
 };
 
@@ -49,9 +50,9 @@ export const updateMe = async (data: string) => {
 export const fetchNotes = async (
   search: string,
   page: number,
-  tag: string = ''
+  tag: string = "",
 ): Promise<ResponseResult> => {
-  const { data } = await api.get('/notes', {
+  const { data } = await api.get("/notes", {
     params: {
       search,
       page,
@@ -63,14 +64,13 @@ export const fetchNotes = async (
   return data;
 };
 
-
 export const fetchNoteById = async (id: string) => {
   const res = await api.get(`/notes/${id}`);
   return res.data;
 };
 
 export const createNote = async (note: CreateNoteData) => {
-  const res = await api.post('/notes', note);
+  const res = await api.post("/notes", note);
   return res.data;
 };
 
@@ -78,4 +78,3 @@ export const deleteNote = async (id: string) => {
   const res = await api.delete(`/notes/${id}`);
   return res.data;
 };
-

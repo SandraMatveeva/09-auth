@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ export default function ProfileEditClient() {
     e.preventDefault();
 
     try {
-      const updatedUser = await updateMe(username);
+      const updatedUser = await updateMe({username});
 
       setUser(updatedUser);
 

@@ -1,11 +1,11 @@
-import { cookies } from 'next/headers';
-import { api } from './api';
+import { cookies } from "next/headers";
+import { api } from "./api";
 
 // 🔐 SERVER getMe
 export const getServerMe = async () => {
   const cookieStore = await cookies();
 
-  const res = await api.get('/users/me', {
+  const res = await api.get("/users/me", {
     headers: {
       Cookie: cookieStore.toString(),
     },
@@ -17,23 +17,34 @@ export const getServerMe = async () => {
 // 🔍 SESSION
 export const checkServerSession = async () => {
   const cookieStore = await cookies();
+  console.log("SERVER");
 
-  const res = await api.get('/auth/session', {
+  const res = await api.get("/auth/session", {
     headers: {
       Cookie: cookieStore.toString(),
     },
   });
 
-  return res.data;
+  return res;
 };
 
 // 📝 NOTES
-export const fetchServerNotes = async () => {
+export const fetchServerNotes = async (
+  search: string,
+  page: number,
+  tag: string = "",
+) => {
   const cookieStore = await cookies();
 
-  const res = await api.get('/notes', {
+  const res = await api.get("/notes", {
     headers: {
       Cookie: cookieStore.toString(),
+    },
+    params: {
+      search,
+      page,
+      perPage: 12,
+      tag,
     },
   });
 

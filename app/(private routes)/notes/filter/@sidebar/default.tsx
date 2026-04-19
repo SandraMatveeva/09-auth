@@ -4,8 +4,6 @@ import Link from "next/link";
 const tags = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 
 const SidebarNotes = () => {
-    console.log("0000");
-    
   return (
     <ul className={css.menuList}>
       <li className={css.menuItem}>

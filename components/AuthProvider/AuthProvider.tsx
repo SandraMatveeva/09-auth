@@ -14,6 +14,9 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const setUser = useAuthStore((s) => s.setUser);
   const clear = useAuthStore((s) => s.clearIsAuthenticated);
 
+  console.log({pathname});
+  
+
   const isPrivateRoute =
     pathname.startsWith("/profile") || pathname.startsWith("/notes");
 
